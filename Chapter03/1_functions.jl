@@ -10,6 +10,7 @@ struct Size
     height::Int
 end
 
+# Widgets hold a single game piece
 struct Widget
     name::String
     position::Position
@@ -22,6 +23,9 @@ end
 # Base.show(io::IO, w::Widget) = print(io, w.name, " at ", w.position, " size ", w.size)
 
 # single-line functions
+# Note the fact that we haven't annotated these functions with widget::Widget
+# This is because that information is not strictly necessary. For method signatures
+# types have no effect on performance. They are only useful to control dispatch.
 move_up!(widget, v)    = widget.position.y -= v
 move_down!(widget, v)  = widget.position.y += v
 move_left!(widget, v)  = widget.position.x -= v
@@ -32,7 +36,7 @@ function move_up!(widget, v)
     widget.position.y -= v
 end
 
-# behavior without annotating type in arguments
+# behavior without annotating type in arguments: error message is somewhat cryptic
 move_up!(1, 2)
 #= REPL
 julia> move_up!(1, 2)
