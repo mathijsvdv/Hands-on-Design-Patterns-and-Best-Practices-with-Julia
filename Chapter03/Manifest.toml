@@ -27,6 +27,12 @@ uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 deps = ["ArgTools", "LibCURL", "NetworkOptions"]
 uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 
+[[FighterJets]]
+deps = ["Vehicle"]
+path = "FighterJets"
+uuid = "c8dbed14-8007-11e9-3b54-e73f1292f90b"
+version = "0.1.0"
+
 [[FileWatching]]
 uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
@@ -128,6 +134,12 @@ uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
 
+[[Tanks]]
+deps = ["Revise", "Vehicle"]
+path = "Tanks"
+uuid = "8cd801b1-bf8e-45ba-b4ae-38aa59b7fcf5"
+version = "0.1.0"
+
 [[Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
@@ -140,7 +152,7 @@ uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 
 [[Vehicle]]
-path = "../Vehicle"
+path = "Vehicle"
 uuid = "b98b9b5e-b798-50c1-8698-b8152dd7d865"
 version = "0.1.0"
 
