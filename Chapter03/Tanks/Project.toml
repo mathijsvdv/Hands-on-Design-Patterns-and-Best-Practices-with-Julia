@@ -2,3 +2,6 @@ name = "Tanks"
 uuid = "8cd801b1-bf8e-45ba-b4ae-38aa59b7fcf5"
 authors = ["Mathijs van der Vlies <mathijsvdvlies@solcon.nl>"]
 version = "0.1.0"
+
+[deps]
+Vehicle = "b98b9b5e-b798-50c1-8698-b8152dd7d865"
