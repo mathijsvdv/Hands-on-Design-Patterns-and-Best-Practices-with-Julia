@@ -22,7 +22,7 @@ struct TripPayment
     fare::Fare
 end
 
-# Use CVS.jl to parse the file into a vecot or TripPayment objects
+# Use CSV.jl to parse the file into a vecot or TripPayment objects
 function read_trip_payment_file(file)
     f = CSV.File(file, datarow = 3)
     records = Vector{TripPayment}(undef, length(f))
