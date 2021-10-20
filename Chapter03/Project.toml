@@ -1,0 +1,4 @@
+[deps]
+FighterJets = "c8dbed14-8007-11e9-3b54-e73f1292f90b"
+Tanks = "8cd801b1-bf8e-45ba-b4ae-38aa59b7fcf5"
+Vehicle = "b98b9b5e-b798-50c1-8698-b8152dd7d865"

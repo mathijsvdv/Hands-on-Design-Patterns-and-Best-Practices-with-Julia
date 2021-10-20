@@ -1,6 +1,6 @@
 # Vehicle interface and FighterJet implementation
 
-using Vehicle, FighterJets
+using Vehicle, FighterJets, Tanks
 
 fj = FighterJet(false, 0, (0,0))
 go!(fj, :mars)
@@ -13,3 +13,6 @@ go!(fj, :mars)
 # Changed direction to 0.52: FighterJet(true, 0.52, (0.0, 0.0))
 # Moved (867.82,496.88): FighterJet(true, 0.52, (867.82, 496.88))
 # Powered off: FighterJet(false, 0.52, (867.82, 496.88))
+
+tank = M4Sherman(true, 0.0, (4.5, 2.0), (:left, :right))
+go!(tank, :berlin)

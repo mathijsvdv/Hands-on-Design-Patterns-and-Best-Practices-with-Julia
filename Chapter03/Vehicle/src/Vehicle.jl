@@ -21,16 +21,27 @@ export go!, land!
 # ------------------------------------------------------------------
 # 3. Generic definitions for the interface
 # ------------------------------------------------------------------
+"""Turn on the vehicle's engine"""
 function power_on! end
+
+"""Turn off the vehicle's engine"""
 function power_off! end
+
+"""Steer the vehicle to the specified direction"""
 function turn! end
+
+"""Move the vehicle by the specified distance"""
 function move! end
+
+"""Get the (x, y) position of the vehicle"""
 function position end
 
 # soft contracts
+"""Engage wheels for landing. Optional"""
 engage_wheels!(args...) = nothing
 
 # trait
+"""Returns true if the vehicle has wheels"""
 has_wheels(vehicle) = error("Not implemented.")
 
 # ------------------------------------------------------------------
