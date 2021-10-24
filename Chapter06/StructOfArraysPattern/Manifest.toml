@@ -289,6 +289,11 @@ uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
+[[TypeSortedCollections]]
+git-tree-sha1 = "d539b357e7695d80c75f5b066cec5d8c45886ab2"
+uuid = "94a5cd58-49a0-5741-bd07-fa4f4be8babf"
+version = "1.1.0"
+
 [[UUIDs]]
 deps = ["Random", "SHA"]
 uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
