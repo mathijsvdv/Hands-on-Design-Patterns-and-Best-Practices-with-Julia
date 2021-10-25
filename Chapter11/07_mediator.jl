@@ -20,7 +20,7 @@ end
 get_number(t::TextField) = parse(Float64, t.value)
 
 # Update text field from a numeric value
-function set_number(t::TextField, x::Real)
+function set_number!(t::TextField, x::Real)
     println("* ", t.id, " is being updated to ", x)
     t.value = string(x)
     return nothing
@@ -33,12 +33,45 @@ function on_change_event(widget::Widget)
     notify(app, widget)
 end
 
+# Factor out the logic of updating the interest amount
+function update_interest_amount!(app::App)
+    new_interest = get_number(app.amount_field) * get_number(app.interest_rate_field)/100
+    set_number!(app.interest_amount_field, new_interest)
+end
+
 # Notify the mediator `app` about a change in the `widget`.
 function notify(app::App, widget::Widget)
     if widget in (app.amount_field, app.interest_rate_field)
-        new_interest = get_number(app.amount_field) * get_number(app.interest_rate_field)/100
-        set_number(app.interest_amount_field, new_interest)
+        update_interest_amount!(app)
     end
+end
+
+# Second way of implementing this mediator: setters
+function set_amount!(app::App, amount::Real)
+    set_number!(app.amount_field, amount)
+    update_interest_amount!(app)
+end
+
+function set_interest_rate!(app::App, interest_rate::Real)
+    set_number!(app.interest_rate_field, interest_rate)
+    update_interest_amount!(app)
+end
+
+# Third way: event type
+struct ChangeEvent end
+
+function notify(app::App, ::ChangeEvent)
+    update_interest_amount!(app)
+end
+
+function set_amount2!(app::App, amount::Real)
+    set_number!(app.amount_field, amount)
+    notify(app, ChangeEvent())
+end
+
+function set_interest_rate2!(app::App, interest_rate::Real)
+    set_number!(app.interest_rate_field, interest_rate)
+    notify(app, ChangeEvent())
 end
 
 # Create an app (the mediator) with some defualt values
@@ -60,15 +93,35 @@ function test()
     print_current_state()
 
     # double principal amount from 100 to 200
-    set_number(app.amount_field, 200)
+    set_number!(app.amount_field, 200)
     on_change_event(app.amount_field)
     print_current_state()
 end
+
+function test_setters()
+    # Show current state before testing
+    print_current_state()
+
+    # double principal amount from 200 to 400
+    set_amount!(app, 400)
+    print_current_state()
+end    
+
+function test_change_event()
+    # Show current state before testing
+    print_current_state()
+
+    # halve principal amount from 400 to 200 again
+    set_amount2!(app, 200)
+    print_current_state()
+end  
 
 end # module
 
 using .MediatorExample
 MediatorExample.test()
+MediatorExample.test_setters()
+MediatorExample.test_change_event()
 
 #= 
 julia> MediatorExample.test()
