@@ -28,6 +28,16 @@ end
 
 # Example usage
 
+function check_fraudulent_amount(req::DepositRequest)
+    if req.amount > 5_000_000
+        println("Are you sure this is not laundered money?")
+        return HANDLED
+    else
+        println("Looks legitimate")
+        return CONTINUE        
+    end
+end
+
 function update_account_handler(req::DepositRequest) 
     println("Deposited $(req.amount) to account $(req.id)")
     return CONTINUE
@@ -45,6 +55,7 @@ function notify_customer(req::DepositRequest)
 end
 
 handlers = [
+    check_fraudulent_amount,
     update_account_handler, 
     send_gift_handler,
     notify_customer
@@ -57,6 +68,10 @@ function test()
 
     println("\nTest: regular customer")
     amount = 1000
+    apply(DepositRequest(2, amount), handlers)
+
+    println("\nTest: criminal")
+    amount = 20_000_000
     apply(DepositRequest(2, amount), handlers)
 end
 
