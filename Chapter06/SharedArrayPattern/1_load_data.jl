@@ -43,7 +43,7 @@ function generate_test_data(nfiles)
 end
 
 # put test data in a separate directory
-folder = joinpath(ENV["HOME"], "julia_book_ch06_data")
+folder = joinpath(ENV["HOME"], "data", "julia_book_ch06_data")
 make_data_directories(folder)
 cd(folder)
 generate_test_data(100_000)
@@ -104,8 +104,8 @@ function load_data!(nfiles, dest)
 end
 
 # main program
-@everywhere cd(joinpath(ENV["HOME"], "julia_book_ch06_data"))
-nfiles  = 100_000;
+@everywhere cd(joinpath(ENV["HOME"], "data", "julia_book_ch06_data"))
+nfiles  = 50_000;
 nstates = 10_000;
 nattr   = 3;
 valuation = SharedArray{Float64}(nstates, nattr, nfiles);
